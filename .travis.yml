@@ -8,6 +8,7 @@ install:
 
 script:
   - pipenv run python -m release.cli
+  - find . -type f ! -iname "*.ics" -delete
 
 deploy:
   provider: pages
