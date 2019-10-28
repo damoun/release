@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import os
+
 from icalendar import Calendar, Event
 
 
@@ -16,6 +18,8 @@ class ReleaseCalendar():
             self.cal.add_component(event)
 
     def write(self, path):
-        file = open("%s/%s.ics" % (path, self.zone), 'wb')
+        filename = "%s/%s.ics" % (path, self.zone)
+        os.makedirs(os.path.dirname(filename), exist_ok=True)
+        file = open(filename, 'wb')
         file.write(self.cal.to_ical())
         file.close()
