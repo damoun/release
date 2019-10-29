@@ -31,5 +31,5 @@ class NSwitchGame(Game):
         dates = iter(self.row.find_all('td')[3:])
         for zone in zones:
             self.release_date[zone] = parse_date(
-                next(dates).get_text().strip()
+                next(dates).get_text().strip(), format='%B %d, %Y'
             )
