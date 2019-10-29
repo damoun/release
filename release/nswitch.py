@@ -3,7 +3,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-from .game import Game
+from .game import NSwitchGame
 
 
 GAME_ZONES = ['JP', 'NA', 'PAL']
@@ -27,5 +27,5 @@ class NintendoSwitch():
         next(game_rows)
         next(game_rows)
         for game_row in game_rows:
-            games.append(Game(game_row, GAME_ZONES))
+            games.append(NSwitchGame(game_row, GAME_ZONES))
         return games

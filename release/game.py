@@ -11,6 +11,20 @@ class Game():
         self.parse_release_date(zones)
 
     def parse_title(self):
+        pass
+
+    def parse_release_date(self, zones):
+        pass
+
+
+class NSwitchGame(Game):
+    def __init__(self, row, zones):
+        self.row = row
+        self.release_date = {}
+        self.parse_title()
+        self.parse_release_date(zones)
+
+    def parse_title(self):
         self.title = self.row.find('th').get_text().strip()
 
     def parse_release_date(self, zones):
