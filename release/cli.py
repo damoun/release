@@ -5,20 +5,26 @@ import sys
 
 import click
 
+from .utils import to_kebab_case
 from .calendar import ReleaseCalendar
-from .nswitch import NintendoSwitch, GAME_ZONES
+from .platform import NintendoSwitch, Playstation4
+
+
+def create_calendars(platform):
+    console = platform()
+    calendars = list(map(ReleaseCalendar, platform.GAME_ZONES))
+    for calendar in calendars:
+        calendar.populate(console.games)
+    for calendar in calendars:
+        calendar.write(to_kebab_case(platform.__name__))
 
 
 @click.command()
 def main():
     """Console script for python_template."""
-    nswitch = NintendoSwitch()
-    calendars = list(map(ReleaseCalendar, GAME_ZONES))
-    for game in nswitch.games:
-        for calendar in calendars:
-            calendar.add_release(game)
-    for calendar in calendars:
-        calendar.write('nintendo-switch')
+    consoles = [NintendoSwitch, Playstation4]
+    for console in consoles:
+        create_calendars(console)
     return 0
 
 

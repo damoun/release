@@ -17,6 +17,10 @@ class ReleaseCalendar():
             event.add('dtstart', game.release_date[self.zone])
             self.cal.add_component(event)
 
+    def populate(self, games):
+        for game in games:
+            self.add_release(game)
+
     def write(self, path):
         filename = "%s/%s.ics" % (path, self.zone)
         os.makedirs(os.path.dirname(filename), exist_ok=True)
