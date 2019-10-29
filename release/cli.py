@@ -7,7 +7,7 @@ import click
 
 from .utils import to_kebab_case
 from .calendar import ReleaseCalendar
-from .platform import NintendoSwitch, Playstation4
+from .platform import NintendoSwitch, Playstation4, XboxOne
 
 
 def create_calendars(platform):
@@ -22,7 +22,7 @@ def create_calendars(platform):
 @click.command()
 def main():
     """Console script for python_template."""
-    consoles = [NintendoSwitch, Playstation4]
+    consoles = [NintendoSwitch, Playstation4, XboxOne]
     for console in consoles:
         create_calendars(console)
     return 0

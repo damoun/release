@@ -69,3 +69,11 @@ class Playstation4(Platform):
         if ids is None:
             ids = ['softwarelist', 'f2plist']
         return super(Playstation4, self).get_game_rows(url, ids)
+
+
+class XboxOne(Platform):
+    GAME_TYPE = XOneGame
+    WIKIPEDIA_PAGES = [
+        'List_of_Xbox_One_games_(A–L)',
+        'List_of_Xbox_One_games_(M–Z)'
+    ]

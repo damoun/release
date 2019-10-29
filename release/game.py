@@ -39,3 +39,15 @@ class PS4Game(Game):
             self.release_date[zone] = parse_date(
                 next(dates).get_text().strip(), fmt='%b %d, %Y'
             )
+
+
+class XOneGame(Game):
+    def parse_title(self):
+        self.title = self.row.find('td').get_text().strip()
+
+    def parse_release_date(self, zones):
+        dates = iter(self.row.find_all('td')[4:])
+        for zone in zones:
+            self.release_date[zone] = parse_date(
+                next(dates).get_text().strip(), fmt='%b %d, %Y'
+            )
