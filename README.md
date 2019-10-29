@@ -1,4 +1,3 @@
-<img align="left" width="0" height="192px" hspace="10"/>
 <h1 align="center">
   <br><img src="project-logo.svg">
   <br>
