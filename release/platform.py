@@ -1,32 +1,40 @@
 # -*- coding: utf-8 -*-
 
-import requests
+from requests import Session
 from bs4 import BeautifulSoup
 
-from .game import NSwitchGame, PS4Game
+from .game import Game, NSwitchGame, PS4Game, XOneGame
 
 
 WIKIPEDIA_BASE_URL = 'https://en.wikipedia.org/wiki/'
 
 
 class Platform():
+    GAME_TYPE = Game
     GAME_ZONES = ['JP', 'EU', 'NA']
     WIKIPEDIA_PAGES = []
 
     def __init__(self):
         self.games = []
+        self.session = Session()
         for path in self.WIKIPEDIA_PAGES:
             self.games += self.fetch_games(WIKIPEDIA_BASE_URL + path)
 
     def fetch_games(self, url):
-        pass
+        games = []
+        game_rows = self.get_game_rows(url)
+        for game_row in game_rows:
+            games.append(self.GAME_TYPE(game_row, self.GAME_ZONES))
+        return games
 
     def get_zones(self):
         return self.GAME_ZONES
 
-    def get_game_rows(self, url, ids=['softwarelist', 'f2plist']):
+    def get_game_rows(self, url, ids=None):
         game_rows = []
-        html = requests.get(url).text
+        if ids is None:
+            ids = ['softwarelist', 'f2plist', 'table1']
+        html = self.session.get(url).text
         soup = BeautifulSoup(html, 'html.parser')
         for html_id in ids:
             table = soup.find('table', id=html_id)
@@ -36,30 +44,28 @@ class Platform():
 
 
 class NintendoSwitch(Platform):
+    GAME_TYPE = NSwitchGame
     GAME_ZONES = ['JP', 'NA', 'PAL']
     WIKIPEDIA_PAGES = [
         'List_of_Nintendo_Switch_games',
         'List_of_Nintendo_Switch_games_(M–Z)'
     ]
 
-    def fetch_games(self, url):
-        games = []
-        game_rows = self.get_game_rows(url)
-        for game_row in game_rows:
-            games.append(NSwitchGame(game_row, self.GAME_ZONES))
-        return games
+    def get_game_rows(self, url, ids=None):
+        if ids is None:
+            ids = ['softwarelist']
+        return super(NintendoSwitch, self).get_game_rows(url, ids)
 
 
 class Playstation4(Platform):
+    GAME_TYPE = PS4Game
     WIKIPEDIA_PAGES = [
         'List_of_PlayStation_4_games',
         'List_of_PlayStation_4_games_(M–Z)',
         'List_of_PlayStation_4_free-to-play_games'
     ]
 
-    def fetch_games(self, url):
-        games = []
-        game_rows = self.get_game_rows(url)
-        for game_row in game_rows:
-            games.append(PS4Game(game_row, self.GAME_ZONES))
-        return games
+    def get_game_rows(self, url, ids=None):
+        if ids is None:
+            ids = ['softwarelist', 'f2plist']
+        return super(Playstation4, self).get_game_rows(url, ids)
