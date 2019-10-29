@@ -7,10 +7,19 @@ from .game import NSwitchGame, PS4Game
 
 
 class Platform():
+    GAME_ZONES = []
+    WIKIPEDIA_PAGES = []
+
     def __init__(self):
         self.games = []
         for url in self.WIKIPEDIA_PAGES:
             self.games += self.fetch_games(url)
+
+    def fetch_games(self, url):
+        pass
+
+    def get_zones(self):
+        return self.GAME_ZONES
 
 
 class NintendoSwitch(Platform):
