@@ -6,14 +6,17 @@ from bs4 import BeautifulSoup
 from .game import NSwitchGame, PS4Game
 
 
+WIKIPEDIA_BASE_URL = 'https://en.wikipedia.org/wiki/'
+
+
 class Platform():
-    GAME_ZONES = []
+    GAME_ZONES = ['JP', 'EU', 'NA']
     WIKIPEDIA_PAGES = []
 
     def __init__(self):
         self.games = []
-        for url in self.WIKIPEDIA_PAGES:
-            self.games += self.fetch_games(url)
+        for path in self.WIKIPEDIA_PAGES:
+            self.games += self.fetch_games(WIKIPEDIA_BASE_URL + path)
 
     def fetch_games(self, url):
         pass
@@ -25,8 +28,8 @@ class Platform():
 class NintendoSwitch(Platform):
     GAME_ZONES = ['JP', 'NA', 'PAL']
     WIKIPEDIA_PAGES = [
-        'https://en.wikipedia.org/wiki/List_of_Nintendo_Switch_games',
-        'https://en.wikipedia.org/wiki/List_of_Nintendo_Switch_games_(M–Z)'
+        'List_of_Nintendo_Switch_games',
+        'List_of_Nintendo_Switch_games_(M–Z)'
     ]
 
     def fetch_games(self, url):
@@ -42,11 +45,10 @@ class NintendoSwitch(Platform):
 
 
 class Playstation4(Platform):
-    GAME_ZONES = ['JP', 'EU', 'NA']
     WIKIPEDIA_PAGES = [
-        'https://en.wikipedia.org/wiki/List_of_PlayStation_4_games',
-        'https://en.wikipedia.org/wiki/List_of_PlayStation_4_games_(M–Z)',
-        'https://en.wikipedia.org/wiki/List_of_PlayStation_4_free-to-play_games'
+        'List_of_PlayStation_4_games',
+        'List_of_PlayStation_4_games_(M–Z)',
+        'List_of_PlayStation_4_free-to-play_games'
     ]
 
     def fetch_games(self, url):
