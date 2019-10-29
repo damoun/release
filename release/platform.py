@@ -24,6 +24,16 @@ class Platform():
     def get_zones(self):
         return self.GAME_ZONES
 
+    def get_game_rows(self, url, ids=['softwarelist', 'f2plist']):
+        game_rows = []
+        html = requests.get(url).text
+        soup = BeautifulSoup(html, 'html.parser')
+        for html_id in ids:
+            table = soup.find('table', id=html_id)
+            if table:
+                game_rows += table.find_all('tr')[2:]
+        return game_rows
+
 
 class NintendoSwitch(Platform):
     GAME_ZONES = ['JP', 'NA', 'PAL']
@@ -34,11 +44,7 @@ class NintendoSwitch(Platform):
 
     def fetch_games(self, url):
         games = []
-        html = requests.get(url).text
-        soup = BeautifulSoup(html, 'html.parser')
-        game_rows = iter(soup.find('table', id='softwarelist').find_all('tr'))
-        next(game_rows)
-        next(game_rows)
+        game_rows = self.get_game_rows(url)
         for game_row in game_rows:
             games.append(NSwitchGame(game_row, self.GAME_ZONES))
         return games
@@ -53,11 +59,7 @@ class Playstation4(Platform):
 
     def fetch_games(self, url):
         games = []
-        html = requests.get(url).text
-        soup = BeautifulSoup(html, 'html.parser')
-        game_rows = iter(soup.find('table', id='softwarelist').find_all('tr'))
-        next(game_rows)
-        next(game_rows)
+        game_rows = self.get_game_rows(url)
         for game_row in game_rows:
             games.append(PS4Game(game_row, self.GAME_ZONES))
         return games
