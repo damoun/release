@@ -10,12 +10,13 @@ You can contribute in many ways:
 
 ### Report Bugs
 
-Report bugs at https://github.com/damoun/release/issues.
+Report bugs at [issues][].
 
 If you are reporting a bug, please include:
 
 - Your operating system name and version.
-- Any details about your local setup that might be helpful in troubleshooting.
+- Any details about your local setup that might be helpful in
+  troubleshooting.
 - Detailed steps to reproduce the bug.
 
 ### Fix Bugs
@@ -36,7 +37,7 @@ articles, and such.
 
 ### Submit Feedback
 
-The best way to send feedback is to file an issue at https://github.com/damoun/release/issues.
+The best way to send feedback is to file an issue at [issues][].
 
 If you are proposing a feature:
 
@@ -45,27 +46,28 @@ If you are proposing a feature:
 - Remember that this is a volunteer-driven project, and that contributions
   are welcome :)
 
-## Get Started!
+## Get Started
 
 Ready to contribute? Here's how to set up `release` for local development.
 
 1. Fork the `release` repo on GitHub.
 2. Clone your fork locally:
 
-```shell
-$ git clone git@github.com:your_name_here/release.git
+```sh
+git clone git@github.com:your_name_here/release.git
 ```
 
-3. Install your local copy into a virtualenv. Assuming you have Pipenv installed, this is how you set up your fork for local development:
+3. Install your local copy into a virtualenv. Assuming you have Pipenv
+   installed, this is how you set up your fork for local development:
 
-```shell
-$ pipenv install --dev
+```sh
+pipenv install --dev
 ```
 
 4. Create a branch for local development:
 
-```shell
-$ git checkout -b name-of-your-bugfix-or-feature
+```sh
+git checkout -b name-of-your-bugfix-or-feature
 ```
 
     Now you can make your changes locally.
@@ -73,17 +75,17 @@ $ git checkout -b name-of-your-bugfix-or-feature
 5. When you're done making changes, check that your changes pass flake8 and the
    tests, including testing other Python versions with tox:
 
-```shell
-$ pipenv run pylama
-$ pipenv run coverage run -m unittest discover
+```sh
+pipenv run pylama
+pipenv run coverage run -m unittest discover
 ```
 
 6. Commit your changes and push your branch to GitHub:
 
-```shell
-$ git add .
-$ git commit -m "Your detailed description of your changes."
-$ git push origin name-of-your-bugfix-or-feature
+```sh
+git add .
+git commit -m "Your detailed description of your changes."
+git push origin name-of-your-bugfix-or-feature
 ```
 
 7. Submit a pull request through the GitHub website.
@@ -95,17 +97,17 @@ Before you submit a pull request, check that it meets these guidelines:
 1. The pull request should include tests.
 2. If the pull request adds functionality, the docs should be updated. Put
    your new functionality into a function with a docstring, and add the
-   feature to the list in README.rst.
+   feature to the list in README.md.
 3. The pull request should work for Python 3.8. Check
-   https://travis-ci.org/damoun/release/pull_requests
-   and make sure that the tests pass for all supported Python versions.
+   [pull-request][] and make sure that the tests pass for all supported Python
+   versions.
 
 ## Tips
 
 To run a subset of tests:
 
-```shell
-$ pipenv run python -m unittest discover
+```sh
+pipenv run python -m unittest discover
 ```
 
 ## Deploying
@@ -114,3 +116,6 @@ A reminder for the maintainers on how to deploy.
 Make sure all your changes are committed (including an entry in CHANGELOG.md).
 
 Travis will then deploy master branch to Github Pages if tests pass.
+
+[issues]: https://github.com/damoun/release/issues
+[pull-request]: https://travis-ci.org/damoun/release/pull_requests

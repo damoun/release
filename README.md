@@ -30,11 +30,11 @@
 
 ## Installing
 
-This Python project use [Pipenv](https://pipenv.readthedocs.io/en/latest/) for it's dependencies.
+This Python project use [Pipenv][pipenv] for it's dependencies.
 
 ```sh
-$ pipenv install --dev
-$ pipenv run python -m release.cli
+pipenv install --dev
+pipenv run python -m release.cli
 ```
 
 ## Getting Started
@@ -54,6 +54,9 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for more details.
 4. `Push` your `commits` to the `branch`
 5. Submit a `pull request`
 
-> You can find more information about Pull Requests [here](https://help.github.com/categories/collaborating-on-projects-using-pull-requests/)
+> You can find more information about Pull Requests [here][pull-request-help]
 
 Check also the [list of contributors](AUTHOR.md#contributors) who helped on this project.
+
+[pipenv]: https://pipenv.readthedocs.io/en/latest/
+[pull-request-help]: https://help.github.com/categories/collaborating-on-projects-using-pull-requests/

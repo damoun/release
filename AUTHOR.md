@@ -2,7 +2,7 @@
 
 ## Development Lead
 
-- Damien PLENARD <damien@plenard.me>
+ - Damien PLENARD <mailto:damien@plenard.me>
 
 ## Contributors
 
