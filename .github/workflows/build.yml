@@ -1,7 +1,10 @@
 name: Generate calendar from Wikipedia
 on:
+  push:
+    branches:
+      - master
   schedule:
-    - cron:  '0 5 * * *'
+    - cron: '0 5 * * *'
 jobs:
   calendar:
     runs-on: ubuntu-latest
