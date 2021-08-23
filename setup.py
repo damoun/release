@@ -26,7 +26,7 @@ setup(
     license="MIT License",
     long_description=README + '\n\n' + CHANGELOG,
     name='release',
-    packages=('release'),
+    packages=['release'],
     project_urls={
         'Maintainer': 'https://github.com/damoun',
         'Source': 'https://github.com/damoun/release',

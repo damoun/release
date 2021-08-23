@@ -16,6 +16,7 @@ requests = "*"
 bs4 = "*"
 icalendar = "*"
 click = "*"
+release = {path = "."}
 
 [requires]
-python_version = "3.7"
+python_version = "3.9"
