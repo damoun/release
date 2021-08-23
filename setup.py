@@ -16,7 +16,7 @@ setup(
     author_email='damien@plenard.me',
     classifiers=[
         'Topic :: Games/Entertainment',
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
         'Programming Language :: Python :: 3',
@@ -32,5 +32,5 @@ setup(
         'Source': 'https://github.com/damoun/release',
         'Tracker': 'https://github.com/damoun/release/issues'
     },
-    version="0.0.1"
+    version="0.1.0"
 )
