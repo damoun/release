@@ -13,6 +13,17 @@ jobs:
         console: ['switch', 'xboxone', 'ps4']
     steps:
       - uses: actions/checkout@v2
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-python-modules
+        with:
+          path: ~/.cache/pipenv
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/Pipfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
       - uses: actions/setup-python@v2
         with:
           python-version: '3.9'
