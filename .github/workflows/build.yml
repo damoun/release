@@ -1,0 +1,22 @@
+name: Generate calendar from Wikipedia
+on:
+  schedule:
+    - cron:  '0 5 * * *'
+jobs:
+  calendar:
+    runs-on: ubuntu-latest
+    strategy:
+    matrix:
+      console: ['switch', 'xboxone', 'ps4']
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+      - name: Build 🔧 (${{ matrix.console }})
+        run: pipenv run python -m release.cli ${{ matrix.console }} -o build
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4
+        with:
+          branch: gh-pages
+          folder: build
