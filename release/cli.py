@@ -17,7 +17,7 @@ def create_calendars(platform, path):
     for calendar in calendars:
         calendar.populate(console.games)
     for calendar in calendars:
-        calendar.write(os.path.join(path, to_kebab_case(platform.__name__)))
+        calendar.write(path)
 
 
 @click.group()

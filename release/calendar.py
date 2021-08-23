@@ -22,7 +22,7 @@ class ReleaseCalendar():
             self.add_release(game)
 
     def write(self, path):
-        filename = "%s/%s.ics" % (path, self.zone)
+        filename = os.path.join(path, self.zone + '.ics')
         os.makedirs(os.path.dirname(filename), exist_ok=True)
         file = open(filename, 'wb')
         file.write(self.cal.to_ical())
