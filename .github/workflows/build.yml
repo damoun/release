@@ -6,15 +6,17 @@ jobs:
   calendar:
     runs-on: ubuntu-latest
     strategy:
-    matrix:
-      console: ['switch', 'xboxone', 'ps4']
+      matrix:
+        console: ['switch', 'xboxone', 'ps4']
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
         with:
           python-version: '3.9'
       - name: Build 🔧 (${{ matrix.console }})
-        run: pipenv run python -m release.cli ${{ matrix.console }} -o build
+        env:
+          CONSOLE: ${{ matrix.console }}
+        run: pipenv run python -m release.cli ${CONSOLE} -o build
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4
         with:
