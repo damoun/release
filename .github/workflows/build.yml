@@ -25,7 +25,10 @@ jobs:
           CONSOLE: ${{ matrix.console }}
         run: pipenv run python -m release.cli ${CONSOLE} -o build
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4
+        if: success()
+        uses: crazy-max/ghaction-github-pages@v2.5.0
         with:
-          branch: gh-pages
-          folder: build
+          target_branch: gh-pages
+          build_dir: public
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
