@@ -1,4 +1,4 @@
-name: Generate calendar from Wikipedia
+name: build
 on:
   push:
     branches:
