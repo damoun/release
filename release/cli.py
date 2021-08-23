@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """Console script for python_template."""
+import os
 import sys
 
 import click
@@ -10,23 +11,40 @@ from .calendar import ReleaseCalendar
 from .platform import NintendoSwitch, Playstation4, XboxOne
 
 
-def create_calendars(platform):
+def create_calendars(platform, path):
     console = platform()
     calendars = list(map(ReleaseCalendar, platform.GAME_ZONES))
     for calendar in calendars:
         calendar.populate(console.games)
     for calendar in calendars:
-        calendar.write(to_kebab_case(platform.__name__))
+        calendar.write(os.path.join(path, to_kebab_case(platform.__name__)))
 
 
-@click.command()
-def main():
-    """Console script for python_template."""
-    consoles = [NintendoSwitch, Playstation4, XboxOne]
-    for console in consoles:
-        create_calendars(console)
-    return 0
+@click.group()
+@click.option('--output', default=".", help='Output to write the files')
+@click.pass_context
+def cli(ctx, output):
+    ctx.ensure_object(dict)
+    ctx.obj['output'] = output
+
+
+@cli.command()
+@click.pass_context
+def switch(ctx):
+    create_calendars(NintendoSwitch, ctx.obj['output'])
+
+
+@cli.command()
+@click.pass_context
+def ps4(ctx):
+    create_calendars(Playstation4, ctx.obj['output'])
+
+
+@cli.command()
+@click.pass_context
+def xboxone(ctx):
+    create_calendars(XboxOne, ctx.obj['output'])
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    cli()
