@@ -23,7 +23,7 @@ jobs:
       - name: Build 🔧 (${{ matrix.console }})
         env:
           CONSOLE: ${{ matrix.console }}
-        run: pipenv run python -m release.cli ${CONSOLE} -o build
+        run: pipenv run python -m release.cli --output build ${CONSOLE}
       - name: Deploy 🚀
         if: success()
         uses: crazy-max/ghaction-github-pages@v2.5.0
