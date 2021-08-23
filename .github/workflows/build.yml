@@ -38,7 +38,7 @@ jobs:
       - name: Archive production artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: ical-${{ matrix.console }}
+          name: ${{ matrix.console }}
           path: build
           retention-days: 3
   deploy:
@@ -47,6 +47,8 @@ jobs:
     steps:
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v2
+        with:
+          path: build
       - name: Deploy 🚀
         if: success()
         uses: crazy-max/ghaction-github-pages@v2.5.0
