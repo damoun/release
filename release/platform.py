@@ -47,8 +47,10 @@ class NintendoSwitch(Platform):
     GAME_TYPE = NSwitchGame
     GAME_ZONES = ['JP', 'NA', 'PAL']
     WIKIPEDIA_PAGES = [
-        'List_of_Nintendo_Switch_games',
-        'List_of_Nintendo_Switch_games_(M–Z)'
+        'List_of_Nintendo_Switch_games_(A–C)',
+        'List of Nintendo Switch games (D–F)',
+        'List of Nintendo Switch games (G–P)',
+        'List of Nintendo Switch games (Q–Z)'
     ]
 
     def get_game_rows(self, url, ids=None):
