@@ -19,9 +19,13 @@ class Game():
 
 class NSwitchGame(Game):
     def parse_title(self):
-        self.title = self.row.find('th').get_text().strip()
+        title_col = self.row.find('th')
+        if not title_col:
+            title_col = self.row.find_all('td')[0]
+        self.title = title_col.get_text().strip()
 
     def parse_release_date(self, zones):
+        print(self.title)
         dates = iter(self.row.find_all('td')[3:])
         for zone in zones:
             self.release_date[zone] = parse_date(
