@@ -11,7 +11,7 @@ WIKIPEDIA_BASE_URL = 'https://en.wikipedia.org/wiki/'
 
 class Platform():
     GAME_TYPE = Game
-    GAME_ZONES = ['JP', 'EU', 'NA']
+    GAME_ZONES = ['JP', 'NA', 'PAL']
     WIKIPEDIA_PAGES = []
 
     def __init__(self):
@@ -45,7 +45,6 @@ class Platform():
 
 class NintendoSwitch(Platform):
     GAME_TYPE = NSwitchGame
-    GAME_ZONES = ['JP', 'NA', 'PAL']
     WIKIPEDIA_PAGES = [
         'List of Nintendo Switch games (0–9 and A)',
         'List of Nintendo Switch games (B)',
