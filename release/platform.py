@@ -62,7 +62,7 @@ class NintendoSwitch(Platform):
 class Playstation4(Platform):
     GAME_TYPE = PS4Game
     WIKIPEDIA_PAGES = [
-        'List_of_PlayStation_4_games',
+        'List_of_PlayStation_4_games_(A–L)',
         'List_of_PlayStation_4_games_(M–Z)',
         'List_of_PlayStation_4_free-to-play_games'
     ]
