@@ -25,12 +25,11 @@ class NSwitchGame(Game):
         self.title = title_col.get_text().strip()
 
     def parse_release_date(self, zones):
-        print(self.title)
-        dates = iter(self.row.find_all('td')[3:])
+        date = parse_date(
+            self.row.find_all('td')[3].get_text().strip(), fmt='%B %d, %Y'
+        )
         for zone in zones:
-            self.release_date[zone] = parse_date(
-                next(dates).get_text().strip(), fmt='%B %d, %Y'
-            )
+            self.release_date[zone] = date
 
 
 class PS4Game(Game):
