@@ -11,6 +11,6 @@ def to_kebab_case(name):
 
 def parse_date(date_string, fmt='%B %d, %Y'):
     try:
-        return datetime.strptime(date_string, fmt)
+        return datetime.strptime(date_string, fmt).date()
     except ValueError:
         return None
