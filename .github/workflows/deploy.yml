@@ -49,7 +49,7 @@ jobs:
           CONSOLE: ${{ matrix.console }}
         run: pipenv run python -m release.cli --output calendars ${CONSOLE}
       - name: Archive production artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.console }}
           path: calendars
