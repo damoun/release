@@ -62,7 +62,7 @@ jobs:
     needs: build
     steps:
       - name: Download all workflow run artifacts
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           path: calendars
       - name: Upload artifact
