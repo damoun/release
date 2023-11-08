@@ -130,11 +130,12 @@
         },
         "icalendar": {
             "hashes": [
-                "sha256:18ad51f9d1741d33795ddaf5c886c59f6575f287d30e5a145c2d42ef72910c7f",
-                "sha256:e306014a64dc4dcf638da0acb2487ee4ada57b871b03a62ed7b513dfc135655c"
+                "sha256:7a298bb864526589d0de81f4b736eeb6ff9e539fefb405f7977aa5c1e201ca00",
+                "sha256:81864971ac43a1b7d0a555dc1b667836ce59fc719a7f845a96f2f03205fb83b9"
             ],
             "index": "pypi",
-            "version": "==5.0.7"
+            "markers": "python_version >= '3.7'",
+            "version": "==5.0.11"
         },
         "idna": {
             "hashes": [
